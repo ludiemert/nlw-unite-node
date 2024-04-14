@@ -1,0 +1,19 @@
+POST http://localhost:3333/events
+Content-Type: application/json
+
+{
+  "title": "Event New Prog 2",
+  "details": "Event React.js",
+  "maximumAttendees": 1
+}
+
+
+###
+
+POST http://localhost:3333/events/a60bc76f-757c-4102-b808-81640a327bcd/attendees
+Content-Type: application/json
+
+{
+  "name": "Luciana Diemert",
+  "email": "lucianaa@gmail.com"
+}
