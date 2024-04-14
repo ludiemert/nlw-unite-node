@@ -2,15 +2,15 @@ POST http://localhost:3333/events
 Content-Type: application/json
 
 {
-  "title": "Event New Prog 2",
-  "details": "Event React.js",
+  "title": "Event React.js and tailwindcss",
+  "details": "Event React and tailwindcss",
   "maximumAttendees": 1
 }
 
 
 ###
 
-POST http://localhost:3333/events/a60bc76f-757c-4102-b808-81640a327bcd/attendees
+POST http://localhost:3333/events/b6f85968-6a8d-4a4d-965c-8a118b7b83f4/attendees
 Content-Type: application/json
 
 {
