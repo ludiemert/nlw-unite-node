@@ -6,9 +6,7 @@ import { FastifyInstance } from "fastify";
 
 export async function createEvent(app: FastifyInstance) {
   //criar uma rota, criar um evento: (POST)
-  app
-  .withTypeProvider<ZodTypeProvider>()
-  .post(
+  app.withTypeProvider<ZodTypeProvider>().post(
     "/events",
     {
       schema: {
@@ -23,14 +21,11 @@ export async function createEvent(app: FastifyInstance) {
           }),
         },
       },
-    }, async (request, reply) => {
-      const { 
-        title, 
-        details, 
-        maximumAttendees } = request.body;
+    },
+    async (request, reply) => {
+      const { title, details, maximumAttendees } = request.body;
 
       const slug = generateSlug(title);
-
 
       //verificar se tem algum evento com o mesmo nome (slug)
       const eventWithSameSlug = await prisma.event.findUnique({
@@ -40,7 +35,7 @@ export async function createEvent(app: FastifyInstance) {
       });
 
       if (eventWithSameSlug !== null) {
-        throw new Error('Another event with same title already exists.');
+        throw new Error("Another event with same title already exists.");
       }
 
       //criando evento

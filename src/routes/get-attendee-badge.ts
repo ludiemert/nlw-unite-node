@@ -8,9 +8,9 @@ export async function getAttendeeBadge(app: FastifyInstance) {
     "/attendees/:attendeeId/badge",
     {
       schema: {
-        params: z.object({ 
-          attendeeId: z.coerce.number().int()
-         }),
+        params: z.object({
+          attendeeId: z.coerce.number().int(),
+        }),
         //tipagem
         response: {
           200: z.object({
@@ -19,8 +19,8 @@ export async function getAttendeeBadge(app: FastifyInstance) {
               email: z.string(),
               eventTitle: z.string(),
               checkInURL: z.string().url(),
-            })
-          })
+            }),
+          }),
         },
       },
     },
