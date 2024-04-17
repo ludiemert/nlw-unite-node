@@ -32,3 +32,11 @@ GET  http://localhost:3333/attendees/6/check-in
 //rota all attendees
 ###
 GET  http://localhost:3333/events/b6f85968-6a8d-4a4d-965c-8a118b7b83f4/attendees
+
+
+//test route search attendees
+###
+GET  http://localhost:3333/events/b6f85968-6a8d-4a4d-965c-8a118b7b83f4/attendees?query=ana
+
+###
+GET  http://localhost:3333/events/b6f85968-6a8d-4a4d-965c-8a118b7b83f4/attendees?query=lu
