@@ -112,19 +112,19 @@ Veja aqui os detalhes do projeto no [Figma](https://www.figma.com/file/HE0J9JzhU
 
 
 ---
-<h2 align="center"> 💻 Project Home Page</h2>
+<h2 align="center"> 💻 Project Tables-prisma</h2>
 <div align="center">
- <img src="./src/assets/1 - Pass-in-Web - Pag_One.png" width="400px" alt="Home Image"/>
+ <img src="./src/assets/Tables-prisma.png" width="400px" alt="Home Image"/>
 </div>
 
-<h2 align="center"> 🤩 URL State - Page</h2>
+<h2 align="center"> 🤩 Route-attendees-badge - Page </h2>
 <div align="center">
-  <img src="./src/assets/2 - URL - State.png" width="400px" alt="Home Image"/>
+  <img src="./src/assets/02 - route-attendees-badge.png" width="400px" alt="Home Image"/>
 </div>
 
-<h2 align="center"> 🤩 earch - URL State - Page</h2>
+<h2 align="center"> 🤩 Route Check-in - Page</h2>
 <div align="center">
- <img src="./src/assets/3 - Search - URL State.png" width="400px" alt="Home Image"/>
+ <img src="./src/assets/04 - Route Check-in.png" width="400px" alt="Home Image"/>
 </div>
 
 ---
