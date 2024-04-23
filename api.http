@@ -2,7 +2,7 @@ POST http://localhost:3333/events
 Content-Type: application/json
 
 {
-  "title": "Event React.js and tailwindcss",
+  "title": 123,
   "details": "Event React and tailwindcss",
   "maximumAttendees": 1
 }

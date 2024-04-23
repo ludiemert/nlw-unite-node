@@ -1,24 +1,22 @@
-//rota de todos osparticipantes do evento
+import {
+  prisma
+} from "./chunk-A2KC6FBC.mjs";
 
-import { FastifyInstance } from "fastify";
-import { ZodTypeProvider } from "fastify-type-provider-zod";
+// src/routes/get-event-attendees.ts
 import { z } from "zod";
-import { prisma } from "../lib/prisma";
-
-export async function getEventAttendees(app: FastifyInstance) {
-  app.withTypeProvider<ZodTypeProvider>().get(
+async function getEventAttendees(app) {
+  app.withTypeProvider().get(
     "/events/:eventId/attendees",
     {
       schema: {
         summary: "Get event attendees",
         tags: ["events"],
-
         params: z.object({
-          eventId: z.string().uuid(),
+          eventId: z.string().uuid()
         }),
         querystring: z.object({
           query: z.string().nullish(),
-          pageIndex: z.string().nullish().default("0").transform(Number),
+          pageIndex: z.string().nullish().default("0").transform(Number)
         }),
         //typagem response
         response: {
@@ -29,18 +27,16 @@ export async function getEventAttendees(app: FastifyInstance) {
                 name: z.string(),
                 email: z.string().email(),
                 createdAt: z.date(),
-                checkedInAt: z.date().nullable(),
+                checkedInAt: z.date().nullable()
               })
-            ),
-          }),
-        },
-      },
+            )
+          })
+        }
+      }
     },
-
     async (request, reply) => {
       const { eventId } = request.params;
       const { pageIndex, query } = request.query;
-
       const attendees = await prisma.attendee.findMany({
         select: {
           id: true,
@@ -49,28 +45,24 @@ export async function getEventAttendees(app: FastifyInstance) {
           createdAt: true,
           checkIn: {
             select: {
-              createdAt: true,
-            },
-          },
-        },
-        where: query
-          ? {
-              eventId,
-              name: {
-                contains: query,
-              },
+              createdAt: true
             }
-          : {
-              eventId,
-            },
-
+          }
+        },
+        where: query ? {
+          eventId,
+          name: {
+            contains: query
+          }
+        } : {
+          eventId
+        },
         take: 10,
         skip: pageIndex * 10,
         orderBy: {
-          createdAt: "desc",
-        },
+          createdAt: "desc"
+        }
       });
-
       return reply.send({
         attendees: attendees.map((attendee) => {
           return {
@@ -78,10 +70,14 @@ export async function getEventAttendees(app: FastifyInstance) {
             name: attendee.name,
             email: attendee.email,
             createdAt: attendee.createdAt,
-            checkedInAt: attendee.checkIn?.createdAt ?? null,
+            checkedInAt: attendee.checkIn?.createdAt ?? null
           };
-        }),
+        })
       });
     }
   );
 }
+
+export {
+  getEventAttendees
+};
